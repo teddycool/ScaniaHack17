@@ -1,23 +1,21 @@
-import DriverComponent.SensorDrivers.GY521 as GY521
-import DeviceCommunication.Publish as Publish
+from DeviceCommunication import DeviceCommunication
 import time
+from DeviceConfig import config
+
 class DeviceIntegration(object):
 
-    def __init__(self):
-        self._acc = GY521.GY521()
-        self._pub = Publish.MqttPublish()
+    def __init__(self, config):
+        self._devcom= DeviceCommunication.DeviceCommunication(config)
 
 
     def update(self):
-        accel_data = self._acc.getAccelerometerdata()
-
-        self._pub.publish("vehicle/front/temperature", str(accel_data))
-
-
+        for key in config["Sensors"]:
+            self._devcom.send(key, config["Sensors"][key].update())
 
 
 if __name__ == "__main__":
-    devint = DeviceIntegration()
+
+    devint = DeviceIntegration(config)
 
     while True:
        devint.update()
