@@ -16,6 +16,7 @@ class GY521(object):
         self._mpu=mpu6050(adr)
         self._xlist = deque([0,0,0],3)
         self._ylist = deque([0, 0, 0], 3)
+        self._zlist = deque([0, 0, 0], 3)
 
 
 
@@ -55,7 +56,17 @@ class accy(object):
         yavg = reduce(lambda x, y: x + y, self._sensor._ylist) / len(self._sensor._ylist)
         return yavg
 
+class accz(object):
+    def __init__(self):
+        self._sensor = sensor
 
+
+    def update(self):
+        self._sensor._acel_data = sensor._mpu.get_accel_data()
+        z = self._sensor._acel_data['z']
+        self._sensor._zlist.append(z)
+        yavg = reduce(lambda x, y: x + y, self._sensor._zlist) / len(self._sensor._zlist)
+        return yavg
 
 
 
