@@ -4,6 +4,7 @@ import smbus
 import math
 import time
 import Queue
+from collections import deque
 from mpu6050 import mpu6050
 # prereqs: https://github.com/Tijndagamer/mpu6050
 
@@ -12,29 +13,19 @@ class GY521(object):
 # Device interface
     def __init__(self, bus=1, adr=0x68):
         self._mpu=mpu6050(adr)
+        self._xlist = deque([0,0,0],3)
+        self._ylist = deque([0, 0, 0], 3)
 
     def getAccelerometerdata(self):
         #Sensoraxis
         self._acel_data= self._mpu.get_accel_data()
-        return self._acel_data
+        x= self._acel_data['x']
+        self._xlist.append(x)
+        xavg = reduce(lambda x, y: x + y, self._xlist) / len(self._xlist)
 
-    #What is rotation in this scenario?
-    def getRotation(self,  degrees=True):
-        pass
-
-    def getDown(self):
-        x,y,z = self.getAccelerometerdata()
-        absacc = (math.abs(1-x),math.abs(1-y),math.abs(1-z))
-        #TODO...
+        return xavg
 
 
-
-    def _dist(self,a, b):
-        return math.sqrt((a * a) + (b * b))
-
-
-    def update(self):
-        return self.getAccelerometerdata()
 
 
 if __name__ == '__main__':
@@ -43,4 +34,4 @@ if __name__ == '__main__':
         print "Accelerometer-data:"
         print gy.getAccelerometerdata()
         print "----------------------------------"
-        time.sleep(1)
+        time.sleep(0.1)

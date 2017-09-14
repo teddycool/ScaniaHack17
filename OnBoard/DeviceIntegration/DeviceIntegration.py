@@ -4,12 +4,13 @@ import time
 class DeviceIntegration(object):
 
     def __init__(self):
-        self._dev = GY521.GY521()
+        self._acc = GY521.GY521()
         self._pub = Publish.MqttPublish()
 
 
     def update(self):
-        accel_data = self._dev.getAccelerometerdata()
+        accel_data = self._acc.getAccelerometerdata()
+
         self._pub.publish("vehicle/front/temperature", str(accel_data))
 
 
@@ -20,5 +21,5 @@ if __name__ == "__main__":
 
     while True:
        devint.update()
-       time.sleep(1)
+       time.sleep(0.1)
 
