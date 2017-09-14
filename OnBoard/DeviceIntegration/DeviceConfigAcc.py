@@ -7,9 +7,8 @@ GPIO.setmode(GPIO.BCM)
 
 config = {#"Actuators": [("red", LedIndicator.LedIndicator(GPIO,16)),("yellow", LedIndicator.LedIndicator(GPIO,20))],
           "Sensors":{
- #                    "accx": GY521.accx(),
- #                    "accy": GY521.accy(),
- #                    "accz": GY521.accz()},
-                     "temp": DHT.DHT("11",21),
+                    "accx": GY521.accx(),
+                    "accy": GY521.accy(),
+                    "accz": GY521.accz()
+                    },
                     }
-            }

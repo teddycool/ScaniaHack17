@@ -14,15 +14,15 @@ class DHT(object):
         self._sensor = sensor_args[type]
 
 
-    def read(self):
+    def update(self):
         try:
             #humidity, temperature
             humidity, temperature = Adafruit_DHT.read_retry(self._sensor, self._pin)
             humidity = round(float(humidity),1)
             temperature = round(float(temperature),1)
-            return str(humidity), str(temperature)
+            return  str(temperature) #, str(humidity),
         except:
-            return "N/A", "N/A"
+            return "N/A"
 
 
 
@@ -31,5 +31,5 @@ if __name__ == '__main__':
     print "Testcode for DHT humidity and temp sensors"
     dht11=DHT('11',21)
     while True:
-        print "DHT11-> " + str(dht11.read())
+        print "DHT11-> " + str(dht11.update())
         time.sleep(1)
