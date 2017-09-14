@@ -12,8 +12,6 @@ class GY521(object):
 # Device interface
     def __init__(self, bus=1, adr=0x68):
         self._mpu=mpu6050(adr)
-        self._accx
-
 
     def getAccelerometerdata(self):
         #Sensoraxis
