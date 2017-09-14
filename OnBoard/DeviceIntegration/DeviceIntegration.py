@@ -6,6 +6,7 @@ class DeviceIntegration(object):
 
     def __init__(self, config):
         self._devcom= DeviceCommunication.DeviceCommunication(config)
+        self._cycletime = config("cycletime")
 
 
     def update(self):
@@ -24,5 +25,5 @@ if __name__ == "__main__":
     devint = DeviceIntegration(config)
     while True:
        devint.update()
-       time.sleep(0.1)
+       time.sleep(config("cycletime"))
 
