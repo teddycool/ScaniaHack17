@@ -9,14 +9,16 @@ class LedIndicator(object):
         print "LedIndicator object created for IO: " + str(self._pin)
 
 
-    def actuate(self, on="1"):
-        print str(on)
-        if on=="1":
-            print "LedIndicator object activated for IO: " + str(self._pin)
-            self._lastActivate = time.time()
-            self._gpio.output(self._pin, True)
-        else:
-            self._gpio.output(self._pin, False)
+    def actuate(self, value):
+        on = int(value)
+        self._gpio.output(self._pin, on)
+
+        # if on=="1":
+        #     print "LedIndicator object activated for IO: " + str(self._pin)
+        #     self._lastActivate = time.time()
+        #     self._gpio.output(self._pin, True)
+        # else:
+        #     self._gpio.output(self._pin, False)
 
 
     def __del__(self):

@@ -56,13 +56,13 @@ class GY273(object):
 
 
     def update(self):
-        return self.getXYZ()
+        return self.getBearing()
 
 
 if __name__ == '__main__':
     gy=GY273()
     while 1:
-        print "X, Y, Z: " + str(gy.getXYZ())
-        print "Bearing"  + str(gy.getBearing())
+        print "Bearing"
+        print gy.update()
         print "----------------------------------"
         time.sleep(0.5)

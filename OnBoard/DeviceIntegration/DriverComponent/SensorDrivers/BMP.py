@@ -36,6 +36,10 @@ class BMP(object):
         else:
             return "N/A"
 
+    def update(self):
+        pre = float('{0:0.2f}'.format(self._sensor.read_pressure() / 100.0))
+        return pre
+
 
 if __name__ == '__main__':
     print "Testcode for BMP085 barometric"

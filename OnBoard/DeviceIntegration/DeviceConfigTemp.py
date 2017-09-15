@@ -7,7 +7,10 @@ GPIO.setmode(GPIO.BCM)
 
 
 config = { "cycletime": 2,
-            #"Actuators": [("red", LedIndicator.LedIndicator(GPIO,16)),("yellow", LedIndicator.LedIndicator(GPIO,20))],
+           "Actuators": [
+               #   "red", LedIndicator.LedIndicator(GPIO,16)),
+               #   "yellow", LedIndicator.LedIndicator(GPIO,20),
+           ],
           "Sensors":{
  #                    "accx": GY521.accx(),
  #                    "accy": GY521.accy(),
