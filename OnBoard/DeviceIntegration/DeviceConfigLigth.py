@@ -1,4 +1,4 @@
-from DriverComponent.ActuatorDrivers import LedIndicator
+from DriverComponent.ActuatorDrivers import Comfort
 from DriverComponent.SensorDrivers import Fake
 from DriverComponent.SensorDrivers import GY273
 from DriverComponent.SensorDrivers import BMP
@@ -6,17 +6,15 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
 
-config = { "cycletime": 1,
+config = { "cycletime": 0,
            "Actuators": {
-               "vehicle/comfort/bad": LedIndicator.LedIndicator(GPIO,16),
-                "vehicle/comfort/ok": LedIndicator.LedIndicator(GPIO,20),
-                "vehicle/comfort/good": LedIndicator.LedIndicator(GPIO,21),
+               "vehicle/comfort": Comfort.Comfort(GPIO,16, 21),
 
 },
           "Sensors":{
                # "bearing": GY273.GY273(),
-                "cab/pressure": BMP.BMP(),
-                # "comfort/bad": Fake.Red(),
+                #"cab/pressure": BMP.BMP(),
+                #"comfort": Fake.Red(),
                 # "comfort/ok": Fake.Red(),
                 # "comfort/good": Fake.Green(),
                    },

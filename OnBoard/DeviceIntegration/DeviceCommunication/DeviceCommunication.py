@@ -14,4 +14,5 @@ class DeviceCommunication(object):
         self._pub.publish("vehicle/" + key, value)
 
     def read(self, key):
+       print key + ": "
        return self._sub[key].read()
