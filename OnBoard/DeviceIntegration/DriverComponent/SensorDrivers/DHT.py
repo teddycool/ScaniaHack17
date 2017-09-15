@@ -20,9 +20,9 @@ class DHT(object):
             humidity, temperature = Adafruit_DHT.read_retry(self._sensor, self._pin)
             humidity = round(float(humidity),1)
             temperature = round(float(temperature),1)
-            return  str(temperature) #, str(humidity),
+            return  temperature #str(temperature) #, str(humidity),
         except:
-            return "N/A"
+            return 0
 
 
 
