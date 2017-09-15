@@ -13,7 +13,7 @@ class MqttSubscribe(object):
         self._client.connect("10.0.0.201", 1883)
         self._client.subscribe(topic , qos=1)
         self._client.loop_start()
-        self._lastvalue = -1
+        self._lastvalue = 0
 
     def on_subscribe(self, client, userdata, mid, granted_qos):
         print("Subscribed: " + str(mid) + " " + str(granted_qos))
@@ -23,8 +23,7 @@ class MqttSubscribe(object):
         print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
 
     def read(self):
-        if self._lastvalue > -1:
-            return self._lastvalue
+        return self._lastvalue
 
 
 if __name__ == "__main__":
