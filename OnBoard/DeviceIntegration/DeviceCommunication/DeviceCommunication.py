@@ -11,7 +11,7 @@ class DeviceCommunication(object):
             self._sub[key] = MqttSubscribe(key)
 
     def send(self, key, value):
-        self._pub.publish("sensors/" + key, value)
+        self._pub.publish("vehicle/" + key, value)
 
     def read(self, key):
        return self._sub[key].read()

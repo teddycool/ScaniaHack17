@@ -11,8 +11,8 @@ config = { "cycletime": 1,
                 # "yellow", LedIndicator.LedIndicator(GPIO,20)),
            },
           "Sensors":{
-                    "accx": GY521.accx(),
-                    "accy": GY521.accy(),
-                    "accz": GY521.accz()
+                    "cab/accx": GY521.accx(),
+                    "cab/accy": GY521.accy(),
+                    "cab/accz": GY521.accz()
                     },
                     }

@@ -18,6 +18,7 @@ class MqttPublish(object):
 
     def publish(self, topic, userdata):
         (rc, mid) = self._client.publish(topic, userdata, qos=1)
+        print topic + ": " + str(userdata)
 
 
 

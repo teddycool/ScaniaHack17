@@ -8,16 +8,16 @@ GPIO.setmode(GPIO.BCM)
 
 config = { "cycletime": 1,
            "Actuators": {
-               "red": LedIndicator.LedIndicator(GPIO,16),
-                "yellow": LedIndicator.LedIndicator(GPIO,20),
-                "green": LedIndicator.LedIndicator(GPIO,21),
+               "comfort/bad": LedIndicator.LedIndicator(GPIO,16),
+                "comfort/ok": LedIndicator.LedIndicator(GPIO,20),
+                "comfort/good": LedIndicator.LedIndicator(GPIO,21),
 
 },
           "Sensors":{
-          #      "bearing": GY273.GY273(),
-                "pressure": BMP.BMP(),
-                "red": Fake.Red(),
-                "yellow": Fake.Red(),
-                "green": Fake.Green(),
+               # "bearing": GY273.GY273(),
+                "vehicle/cab/pressure": BMP.BMP(),
+                "comfort/bad": Fake.Red(),
+                "comfort/ok": Fake.Red(),
+                "comfort/good": Fake.Green(),
                    },
                     }
