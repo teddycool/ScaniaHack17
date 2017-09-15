@@ -15,7 +15,7 @@ class Main(object):
         self._mainloop.initialize()
         running=True
         frames = 0
-        print "ClockDisplay Main starts running..."
+        print " Main starts running..."
         while running:
             try:
                 self._mainloop.update()

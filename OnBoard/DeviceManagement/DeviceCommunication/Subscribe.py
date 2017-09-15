@@ -10,7 +10,7 @@ class MqttSubscribe(object):
         self._client = paho.Client()
         self._client.on_subscribe = self.on_subscribe
         self._client.on_message = self.on_message
-        self._client.connect("10.0.0.201", 1883)
+        self._client.connect("10.0.0.195", 1883)
         self._client.subscribe(topic , qos=1)
         self._client.loop_start()
         self._lastvalue = 0
