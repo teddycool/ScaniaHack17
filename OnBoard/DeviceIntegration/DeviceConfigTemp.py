@@ -15,6 +15,6 @@ config = { "cycletime": 2,
  #                    "accx": GY521.accx(),
  #                    "accy": GY521.accy(),
  #                    "accz": GY521.accz()},
-                     "temp": DHT.DHT("11",21),
+                     "vehicle/cab/temp": DHT.DHT("11",21),
                     }
             }
